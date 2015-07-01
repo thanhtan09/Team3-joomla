@@ -8,12 +8,14 @@ public class Article {
 	String catetory;
 	String status;
 	String content;
+	String image;
 	
 	public Article(){
 		this.title="";
 		this.catetory="";
 		this.status="";
 		this.content="";
+		this.image="";
 	};
 	
 	//Set title
@@ -57,5 +59,15 @@ public class Article {
 	//Get content
 	public String getContent(){
 		return content;
+	}
+	
+	//Set image
+	public void setImage(String _image){
+		this.image = _image;
+	}
+	
+	//Get image
+	public String getImage(){
+		return image;
 	}
 }
