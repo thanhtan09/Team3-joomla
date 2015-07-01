@@ -39,9 +39,6 @@ public class TanVo_Test extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();
 		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article.getTitle(), article.getCategory(), "", article.getContent());
-		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isMessageDisplay());
 		
 		log.info("Archive an article");
 		articlePage.archiveArticle(article.getTitle());
