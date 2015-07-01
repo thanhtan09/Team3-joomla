@@ -14,4 +14,14 @@ public class Factory_page {
 	{
 		return new Home_page(driver);
 	}
+	
+	public static Article_page getArticlePage(WebDriver driver)
+	{
+		return new Article_page(driver);
+	}
+	
+	public static NewArticle_page getNewArticlePage(WebDriver driver)
+	{
+		return new NewArticle_page(driver);
+	}
 }

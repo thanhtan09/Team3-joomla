@@ -62,5 +62,8 @@ public class Interfaces {
 		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String FRAME_CONTENT = "//iframe[@id='jform_articletext_ifr']";
+		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
+		public static final String BTN_INSERT = "//div[@class='fltrt']/button[contains(text(),'Insert')]";
+		public static final String FRAME_IMAGE = "//iframe[@id='imageframe']";
 	}
 }

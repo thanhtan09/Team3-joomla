@@ -47,9 +47,18 @@ public class Article_page extends Abstract_page{
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isMessageDisplay(){
+	public boolean isArticleDisplay(String article){
 		boolean show = false;
-		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGESUCCESS);		
+		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGESUCCESS);	
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for(int i=1;i<=iCount;i++){
+			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
+			if(cell.equals(article)){
+				show = true;
+				break;
+			}
+		}
 		return show;
 	}
 	

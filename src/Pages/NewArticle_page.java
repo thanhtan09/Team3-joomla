@@ -18,18 +18,38 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page addNewArticle(String _title, String _category, String _status, String _content){
+	public Article_page addNewArticle(String _title, String _category, String _status, String _content, String _image){
 		enterTitle(_title);
 		selectCatetory(_category);
 		if(_status!=""){
 			selectStatus(_status);
 		}
 		enterArticleText(_content);
+		
+		if(_image!=""){
+			insertImage(_image);
+		}
+		
 		clickSaveandClosebutton();
 		
 		return new Article_page(driver);
 	}
 	
+	/*
+	 * Edit an article
+	 * 
+	 * Parameter: title, category, status, content
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void insertImage(String image){
+		
+		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_IMAGE));
+		
+		switchFrame(driver, By.xpath(Interfaces.NewArticlePage.FRAME_IMAGE));
+        click(driver, By.xpath("//div[@class='item']/a[@title='"+image+"']/img"));
+        
+	}
 	/*
 	 * Edit an article
 	 * 
