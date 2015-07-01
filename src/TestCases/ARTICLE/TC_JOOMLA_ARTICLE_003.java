@@ -42,7 +42,7 @@ public class TC_JOOMLA_ARTICLE_003 extends Abstract_test{
 		
 		articlePage = newArticlePage.addNewArticle(article.getTitle(), article.getCategory(), "", article.getContent());
 		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isMessageDisplay());
+		verifyTrue(articlePage.isArticleDisplay(article.getTitle()));
 		
 		log.info("Publish an article");
 		articlePage.publishArticle(article.getTitle());
