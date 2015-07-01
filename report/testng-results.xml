@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="22906" started-at="2015-07-01T10:52:20Z" finished-at="2015-07-01T10:52:43Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="22906" started-at="2015-07-01T10:52:20Z" finished-at="2015-07-01T10:52:43Z">
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_002">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_002@63d4e2ba]" name="setup" is-config="true" duration-ms="7805" started-at="2015-07-01T17:52:20Z" finished-at="2015-07-01T17:52:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_002()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_002@63d4e2ba]" name="TC_002" duration-ms="10368" started-at="2015-07-01T17:52:28Z" finished-at="2015-07-01T17:52:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_002 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_002@63d4e2ba]" name="end" is-config="true" duration-ms="4718" started-at="2015-07-01T17:52:38Z" finished-at="2015-07-01T17:52:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_002 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
