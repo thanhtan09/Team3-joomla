@@ -94,11 +94,13 @@ public class ReadData {
 						Cell category = sheet.getCell(2, row);
 						Cell status = sheet.getCell(3, row);
 						Cell content = sheet.getCell(4, row);
+						Cell image = sheet.getCell(5,row);
 						
 						article.setTitle(title.getContents());
 						article.setCategory(category.getContents());
 						article.setStatus(status.getContents());
 						article.setContent(content.getContents());
+						article.setImage(image.getContents());
 					}
 				}
 			}
