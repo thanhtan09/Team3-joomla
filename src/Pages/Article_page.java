@@ -18,8 +18,11 @@ public class Article_page extends Abstract_page {
 	// Status
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIVED = "Archived";
+	private String STATUS_ALL = "All";
 	private String PUBLISH = "Published";
 	private String UNPUBLISH = "Unpublished";
+	private String FRATURED = "Featured article";
+	private String UNFRATURED = "Unfeatured article";
 
 	public Article_page(WebDriver driver) {
 		this.driver = driver;
@@ -223,7 +226,7 @@ public class Article_page extends Abstract_page {
 					By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
 							+ "[contains(text(),'" + iCount + MESSAGEDELETEALL
 							+ "')]"));
-			System.out.print("So row la "+iCount);
+			System.out.print("So row la " + iCount);
 		} else {
 			for (int i = 1; i <= iCount; i++) {
 				String cell = getText(
@@ -387,7 +390,7 @@ public class Article_page extends Abstract_page {
 		}
 		return position;
 	}
-	
+
 	/*
 	 * Click on status icon
 	 * 
@@ -395,7 +398,7 @@ public class Article_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickStatusIcon(String article){
+	public void clickStatusIcon(String article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for (int i = 1; i <= iCount; i++) {
@@ -404,9 +407,105 @@ public class Article_page extends Abstract_page {
 					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
 							+ "]/td[" + 2 + "]/a"));
 			if (cell.equals(article)) {
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[3]/a/span"));
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[1]/input"));
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[3]/a/span"));
 				break;
 			}
 		}
+	}
+
+	/*
+	 * Click on Featured icon
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickFeaturedIcon(String article) {
+		
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_ALL);
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[1]/input"));
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[4]/a/img"));
+				break;
+			}
+		}
+	}
+
+	/*
+	 * Is Featured article
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isFeaturedArticle(String article) {
+
+		boolean show = false;
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (isControlExist(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[4]/a/img[@alt='" + FRATURED + "']"))) {
+					show = true;
+					break;
+				}
+			}
+		}
+
+		return show;
+	}
+
+	/*
+	 * Is UnFeatured icon
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isUnFeaturedArticle(String article) {
+
+		boolean show = false;
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (isControlExist(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[4]/a/img[@alt='" + UNFRATURED + "']"))) {
+					show = true;
+					break;
+				}
+			}
+		}
+
+		return show;
 	}
 }

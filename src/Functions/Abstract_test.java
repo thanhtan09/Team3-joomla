@@ -52,8 +52,7 @@ public abstract class Abstract_test {
 		try {
 			Assert.assertTrue(condition);
 		} catch (Throwable e) {
-			VerifyFailures.getFailures().addFailureForTest(
-					Reporter.getCurrentTestResult(), e);
+			
 		}
 	}
 }
