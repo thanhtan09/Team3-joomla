@@ -34,7 +34,7 @@ public abstract class Abstract_test {
 		return driver;
 	}
 
-	/*
+	/*.
 	 * Close browser
 	 * 
 	 * Author: Tan Vo
