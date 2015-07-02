@@ -132,7 +132,6 @@ public class Article_page extends Abstract_page{
 		boolean show = false;
 
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_ARCHIVED);
-		refresh(driver);
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for(int i=1;i<=iCount;i++){
