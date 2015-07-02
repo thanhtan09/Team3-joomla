@@ -4,8 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.seleniumhq.jetty7.util.log.Log;
 
 public class Abstract_page {
+	
+	private int timeout = 5;
+	private Log log;
 
 	/*
 	 * Enter value to element
@@ -54,7 +61,27 @@ public class Abstract_page {
 	 */
 	public void select(WebDriver driver, By by, String _value) {
 		WebElement element = driver.findElement(by);
-		element.sendKeys(_value);
+		// element.sendKeys(_value);
+		Select drop = new Select(element);
+		drop.selectByVisibleText(_value);
+	}
+
+	/*
+	 * Wait control exists
+	 * 
+	 * Parameter: driver, by
+	 * 
+	 * Creator: Tan Vo
+	 */
+	public void waitControlExist(WebDriver driver, By by) {
+		try {
+			WebElement element  = driver.findElement(by);
+			WebDriverWait wait = new WebDriverWait(driver, timeout);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+		} catch (Exception e) {
+			log.debug("Element doesn't exist");
+		}
+
 	}
 
 	/*
@@ -68,7 +95,7 @@ public class Abstract_page {
 		WebElement element = driver.findElement(by);
 		driver.switchTo().frame(element);
 	}
-	
+
 	/*
 	 * Get text
 	 * 
@@ -76,11 +103,11 @@ public class Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public String getText(WebDriver driver, By by){
+	public String getText(WebDriver driver, By by) {
 		WebElement element = driver.findElement(by);
 		return element.getText();
 	}
-	
+
 	/*
 	 * Count element
 	 * 
@@ -88,12 +115,12 @@ public class Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public int countElement(WebDriver driver, By by){
-		int count =0;
+	public int countElement(WebDriver driver, By by) {
+		int count = 0;
 		count = driver.findElements(by).size();
 		return count;
 	}
-	
+
 	/*
 	 * Sleep
 	 * 
@@ -108,7 +135,7 @@ public class Abstract_page {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
 	 * Refresh page
 	 * 

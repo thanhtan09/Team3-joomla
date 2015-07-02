@@ -32,6 +32,7 @@ public class Home_page extends Abstract_page{
 		String menu = list;
 		String lastItem = "";
 		String[] subMenu = menu.split("[|]");
+		
 		for (String r: subMenu){
 			hover(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+r+"')]"));
 			lastItem = r;

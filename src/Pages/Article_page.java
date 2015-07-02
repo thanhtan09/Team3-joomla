@@ -12,12 +12,13 @@ public class Article_page extends Abstract_page{
 	private String MESSAGEPUBLISH = "1 article published.";
 	private String MESSAGEUNPUBLISH = "1 article unpublished.";
 	private String MESSAGEARCHIVE = "1 article archived.";
+	private String MESSAGEDELETE = "1 article deleted.";
 	
 	//Status
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIVED = "Archived";
 	private String PUBLISH = "Published";
-	private String UNPUBLISH = "Published";
+	private String UNPUBLISH = "Unpublished";
 	
 	public Article_page(WebDriver driver){
 		this.driver = driver;
@@ -69,13 +70,15 @@ public class Article_page extends Abstract_page{
 	 */
 	public boolean isPublish(String article){
 		boolean show = false;
-		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGEPUBLISH);
+		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEPUBLISH))
+			show = true;
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for(int i=1;i<=iCount;i++){
 			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
 			if(cell.equals(article)){
-				show = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a/span")).contains(PUBLISH);
+				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a/span")).equals(PUBLISH))
+					show = true;
 				break;
 			}
 		}
@@ -90,13 +93,16 @@ public class Article_page extends Abstract_page{
 	 */
 	public boolean isUnPublish(String article){
 		boolean show = false;
-		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGEUNPUBLISH);
+		
+		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEUNPUBLISH))
+			show = true;
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for(int i=1;i<=iCount;i++){
 			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
 			if(cell.equals(article)){
-				show = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+3+"]/a/span")).contains(UNPUBLISH);
+				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a/span")).equals(UNPUBLISH))
+					show = true;
 				break;
 			}
 		}
@@ -107,11 +113,12 @@ public class Article_page extends Abstract_page{
 	/*
 	 * Is article archive
 	 * 
-	 * Author: Giang Nguyen
+	 * Author: Nga Nguyen
 	 */
 	public boolean isArchiveMessage(){
 		boolean show = false;
-		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGEARCHIVE);
+		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEARCHIVE))
+			show = true;
 		
 		return show;
 	}
@@ -119,7 +126,7 @@ public class Article_page extends Abstract_page{
 	/*
 	 * Is article in archive list
 	 * 
-	 * Author: Giang Nguyen
+	 * Author: Nga Nguyen
 	 */
 	public boolean isArchiveList(String article){
 		boolean show = false;
@@ -174,15 +181,24 @@ public class Article_page extends Abstract_page{
 			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
 			if(cell.equals(_article)){
 				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-			
 				break;
 			}
 		}
 		click(driver,By.xpath(Interfaces.ArticlePage.BTN_TRASH));		
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_TRASHED);
-		refresh(driver);
-		click(driver, By.xpath(Interfaces.ArticlePage.CBX_ALL));
+		
+		int iCount1 = 0;
+		iCount1 = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for(int i=1;i<=iCount1;i++){
+			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
+			if(cell.equals(_article)){
+				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
+				break;
+			}
+		}		
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
+		waitControlExist(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE+"[contains(text(),'"+MESSAGEDELETE+"')]"));
+		
 	}
 	
 	/*
