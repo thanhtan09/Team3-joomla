@@ -33,7 +33,7 @@ public class TC_JOOMLA_ARTICLE_013 extends Abstract_test{
 		driver = openJoomla(url);
 	}
 	
-	@Test
+	@Test(description = "Verify user can add image to article's content")
 	public void TC_013 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
