@@ -146,4 +146,5 @@ public class Abstract_page {
 	public void refresh(WebDriver driver) {
 		driver.navigate().refresh();
 	}
+	
 }

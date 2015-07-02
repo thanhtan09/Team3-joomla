@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class NewArticle_page extends Abstract_page {
 
@@ -45,7 +46,7 @@ public class NewArticle_page extends Abstract_page {
 	public void insertImage(String image){
 		
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_IMAGE));
-		
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@frameborder='0']")));
 		switchFrame(driver, By.xpath(Interfaces.NewArticlePage.FRAME_IMAGE));
         click(driver, By.xpath("//div[@class='item']/a[@title='"+image+"']/img"));
         

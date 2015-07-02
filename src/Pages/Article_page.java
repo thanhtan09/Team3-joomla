@@ -3,147 +3,174 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Article_page extends Abstract_page{
+public class Article_page extends Abstract_page {
 
 	private WebDriver driver;
-	
-	//Message
+
+	// Message
 	private String MESSAGESUCCESS = "Article successfully saved";
 	private String MESSAGEPUBLISH = "1 article published.";
 	private String MESSAGEUNPUBLISH = "1 article unpublished.";
 	private String MESSAGEARCHIVE = "1 article archived.";
 	private String MESSAGEDELETE = "1 article deleted.";
-	
-	//Status
+	private String MESSAGEDELETEALL = " articles deleted.";
+
+	// Status
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIVED = "Archived";
 	private String PUBLISH = "Published";
 	private String UNPUBLISH = "Unpublished";
-	
-	public Article_page(WebDriver driver){
+
+	public Article_page(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	/*
 	 * Open new article page
 	 * 
 	 * Author: Tan Vo
 	 */
-	public NewArticle_page openNewArticlepage(){
-		clickNewbutton();		
+	public NewArticle_page openNewArticlepage() {
+		clickNewbutton();
 		return new NewArticle_page(driver);
 	}
-	
+
 	/*
 	 * Click on New button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickNewbutton(){
-		click(driver,By.xpath(Interfaces.ArticlePage.BTN_NEW));
+	public void clickNewbutton() {
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_NEW));
 	}
 
 	/*
-	 * Is message Article successfully saved displayed 
+	 * Is message Article successfully saved displayed
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isArticleDisplay(String article){
+	public boolean isArticleDisplay(String article) {
 		boolean show = false;
-		show = getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).contains(MESSAGESUCCESS);	
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				show = true;
-				break;
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGESUCCESS)){
+			int iCount = 0;
+			iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(article)) {
+					show = true;
+					break;
+				}
 			}
 		}
 		return show;
 	}
-	
+
 	/*
 	 * Is article publish
 	 * 
 	 * Author: Giang Nguyen
 	 */
-	public boolean isPublish(String article){
+	public boolean isPublish(String article) {
 		boolean show = false;
-		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEPUBLISH))
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGEPUBLISH))
 			show = true;
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+3+"]/a/span/span")).equals(PUBLISH))
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 3 + "]/a/span/span")).equals(
+						PUBLISH))
 					show = true;
 				break;
 			}
 		}
-		
+
 		return show;
 	}
-	
+
 	/*
 	 * Is article unpublish
 	 * 
 	 * Author: Giang Nguyen
 	 */
-	public boolean isUnPublish(String article){
+	public boolean isUnPublish(String article) {
 		boolean show = false;
-		
-		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEUNPUBLISH))
+
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGEUNPUBLISH))
 			show = true;
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+3+"]/a/span/span")).equals(UNPUBLISH))
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 3 + "]/a/span/span")).equals(
+						UNPUBLISH))
 					show = true;
 				break;
 			}
 		}
-		
+
 		return show;
 	}
-	
+
 	/*
 	 * Is article archive
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public boolean isArchiveMessage(){
+	public boolean isArchiveMessage() {
 		boolean show = false;
-		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE)).equals(MESSAGEARCHIVE))
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGEARCHIVE))
 			show = true;
-		
+
 		return show;
 	}
-	
+
 	/*
 	 * Is article in archive list
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public boolean isArchiveList(String article){
+	public boolean isArchiveList(String article) {
 		boolean show = false;
 
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_ARCHIVED);
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+				STATUS_ARCHIVED);
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
 				show = true;
 				break;
 			}
 		}
 		return show;
 	}
-	
+
 	/*
 	 * Enter edit article page
 	 * 
@@ -151,115 +178,210 @@ public class Article_page extends Abstract_page{
 	 * 
 	 * Author: Tan Vo
 	 */
-	public NewArticle_page enterArticle(String article){
+	public NewArticle_page enterArticle(String article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
 				break;
 			}
 		}
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EDIT));
-		
+
 		return new NewArticle_page(driver);
 	}
-	
+
 	/*
-	 * Delete an article 
+	 * Delete article
 	 * 
 	 * Parameter: article name
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void deleteArticle(String _article){
+	public void deleteArticle(String _article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(_article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-				break;
+
+		if (_article.equals("all")) {
+			click(driver, By.xpath(Interfaces.ArticlePage.CBX_ALL));
+			click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
+			select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+					STATUS_TRASHED);
+			click(driver, By.xpath(Interfaces.ArticlePage.CBX_ALL));
+			click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
+			waitControlExist(
+					driver,
+					By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
+							+ "[contains(text(),'" + iCount + MESSAGEDELETEALL
+							+ "')]"));
+		} else {
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(_article)) {
+					click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR
+							+ "[" + i + "]/td[" + 1
+							+ "]/input[@type='checkbox']"));
+					break;
+				}
 			}
+			click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
+			select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+					STATUS_TRASHED);
+
+			int iCount1 = 0;
+			iCount1 = countElement(driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR));
+			for (int i = 1; i <= iCount1; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(_article)) {
+					click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR
+							+ "[" + i + "]/td[" + 1
+							+ "]/input[@type='checkbox']"));
+					break;
+				}
+			}
+			click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
+			waitControlExist(
+					driver,
+					By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
+							+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
 		}
-		click(driver,By.xpath(Interfaces.ArticlePage.BTN_TRASH));		
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_TRASHED);
-		
-		int iCount1 = 0;
-		iCount1 = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount1;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(_article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-				break;
-			}
-		}		
-		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
-		waitControlExist(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE+"[contains(text(),'"+MESSAGEDELETE+"')]"));
-		
+
 	}
-	
+
 	/*
-	 * Publish article 
+	 * Publish article
 	 * 
 	 * Parameter: article name
 	 * 
 	 * Author: Giang Nguyen
 	 */
-	public void publishArticle(String article){
+	public void publishArticle(String article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-			
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
 				break;
 			}
 		}
-		click(driver,By.xpath(Interfaces.ArticlePage.BTN_PUBLISH));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_PUBLISH));
 	}
-	
+
 	/*
-	 * UnPublish article 
+	 * UnPublish article
 	 * 
 	 * Parameter: article name
 	 * 
 	 * Author: Giang Nguyen
 	 */
-	public void unpublishArticle(String article){
+	public void unpublishArticle(String article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-			
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
 				break;
 			}
 		}
-		click(driver,By.xpath(Interfaces.ArticlePage.BTN_UNPUBLISH));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_UNPUBLISH));
 	}
-	
+
 	/*
-	 * Archive article 
+	 * Archive article
 	 * 
 	 * Parameter: article name
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public void archiveArticle(String article){
+	public void archiveArticle(String article) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for(int i=1;i<=iCount;i++){
-			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
-			if(cell.equals(article)){
-				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+1+"]/input[@type='checkbox']"));
-			
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
 				break;
 			}
 		}
-		click(driver,By.xpath(Interfaces.ArticlePage.BTN_ARCHIVE));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_ARCHIVE));
+	}
+
+	/*
+	 * Click on filter ordering
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickOrdering() {
+		click(driver, By.xpath(Interfaces.ArticlePage.FILTER_ORDERING));
+	}
+
+	public boolean isArticleChangePosition(String article) {
+		int first, second = 0;
+
+		clickOrdering();
+		first = getPositionArticle(article);
+		clickOrdering();
+		second = getPositionArticle(article);
+		if (first != second)
+			return true;
+		return false;
+	}
+
+	/*
+	 * Get position of article in table
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Tan Vo
+	 */
+	public int getPositionArticle(String article) {
+		int iCount = 0;
+		int position = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				position = i;
+				break;
+			}
+		}
+		return position;
 	}
 }
