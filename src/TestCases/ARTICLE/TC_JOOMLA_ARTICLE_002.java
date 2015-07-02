@@ -28,13 +28,13 @@ public class TC_JOOMLA_ARTICLE_002 extends Abstract_test{
 	@BeforeMethod
 	public void setup(){
 		String url = data.getUrl("Local_url");
-		user = data.getUser("default user");
+		user = data.getUser("Tan");
 		article = data.getArticle("Article1");
 		article2 = data.getArticle("Article2");
 		driver = openJoomla(url);
 	}
 	
-	@Test
+	@Test(description = "Verify user can edit an article")
 	public void TC_002 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");

@@ -28,7 +28,7 @@ public class TC_JOOMLA_ARTICLE_003 extends Abstract_test{
 	@BeforeMethod
 	public void setup(){
 		String url = data.getUrl("Local_url");
-		user = data.getUser("default user");
+		user = data.getUser("Giang");
 		article = data.getArticle("Article1");
 		driver = openJoomla(url);
 	}
