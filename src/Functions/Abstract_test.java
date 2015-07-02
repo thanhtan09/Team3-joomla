@@ -40,8 +40,13 @@ public abstract class Abstract_test {
 	 * Author: Tan Vo
 	 */
 	protected void shutdown() {
-		driver.quit();
-	}
+		  driver.close();
+		  try {
+		  Thread.sleep(5000);
+		  driver.quit();
+		  } catch (Exception e) {
+		  }
+		 }
 
 	protected void verifyTrue(boolean condition) {
 		try {
