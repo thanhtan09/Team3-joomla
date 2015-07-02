@@ -223,6 +223,7 @@ public class Article_page extends Abstract_page {
 					By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
 							+ "[contains(text(),'" + iCount + MESSAGEDELETEALL
 							+ "')]"));
+			System.out.print("So row la "+iCount);
 		} else {
 			for (int i = 1; i <= iCount; i++) {
 				String cell = getText(
@@ -385,5 +386,27 @@ public class Article_page extends Abstract_page {
 			}
 		}
 		return position;
+	}
+	
+	/*
+	 * Click on status icon
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickStatusIcon(String article){
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[3]/a/span"));
+				break;
+			}
+		}
 	}
 }
