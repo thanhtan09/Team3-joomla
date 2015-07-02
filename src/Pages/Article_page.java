@@ -52,9 +52,10 @@ public class Article_page extends Abstract_page {
 	public boolean isArticleDisplay(String article) {
 		boolean show = false;
 		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
-				.equals(MESSAGESUCCESS)){
+				.equals(MESSAGESUCCESS)) {
 			int iCount = 0;
-			iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+			iCount = countElement(driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR));
 			for (int i = 1; i <= iCount; i++) {
 				String cell = getText(
 						driver,
@@ -77,23 +78,24 @@ public class Article_page extends Abstract_page {
 	public boolean isPublish(String article) {
 		boolean show = false;
 		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
-				.equals(MESSAGEPUBLISH))
-			show = true;
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(article)) {
-				if (getText(
+				.equals(MESSAGEPUBLISH)) {
+			int iCount = 0;
+			iCount = countElement(driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
 						driver,
 						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-								+ "]/td[" + 3 + "]/a/span/span")).equals(
-						PUBLISH))
-					show = true;
-				break;
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(article)) {
+					if (getText(
+							driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+									+ "]/td[" + 3 + "]/a/span/span")).equals(
+							PUBLISH))
+						show = true;
+					break;
+				}
 			}
 		}
 
@@ -109,23 +111,24 @@ public class Article_page extends Abstract_page {
 		boolean show = false;
 
 		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
-				.equals(MESSAGEUNPUBLISH))
-			show = true;
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(article)) {
-				if (getText(
+				.equals(MESSAGEUNPUBLISH)) {
+			int iCount = 0;
+			iCount = countElement(driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
 						driver,
 						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-								+ "]/td[" + 3 + "]/a/span/span")).equals(
-						UNPUBLISH))
-					show = true;
-				break;
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(article)) {
+					if (getText(
+							driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+									+ "]/td[" + 3 + "]/a/span/span")).equals(
+							UNPUBLISH))
+						show = true;
+					break;
+				}
 			}
 		}
 
@@ -138,12 +141,11 @@ public class Article_page extends Abstract_page {
 	 * Author: Nga Nguyen
 	 */
 	public boolean isArchiveMessage() {
-		boolean show = false;
 		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
 				.equals(MESSAGEARCHIVE))
-			show = true;
+			return true;
 
-		return show;
+		return false;
 	}
 
 	/*
