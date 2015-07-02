@@ -29,7 +29,7 @@ public class TC_JOOMLA_ARTICLE_015 extends Abstract_test{
 	public void setup(){
 		String url = data.getUrl("Local_url");
 		user = data.getUser("Tan");
-		article1 = data.getArticle("Article1");
+		article1 = data.getArticle("Article6");
 		driver = openJoomla(url);
 	}
 	
@@ -40,17 +40,17 @@ public class TC_JOOMLA_ARTICLE_015 extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();
 		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article1.getTitle(), article1.getCategory(), "", article1.getContent(),"");
+		articlePage = newArticlePage.addNewArticle(article1.getTitle(), article1.getCategory(), article1.getStatus(), article1.getContent(),"");
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(articlePage.isArticleDisplay(article1.getTitle()));	
 		
 		log.info("Verify the article is unpublished successfully");
 		articlePage.clickStatusIcon(article1.getTitle());
-		articlePage.isUnPublish(article1.getTitle());
+		verifyTrue(articlePage.isUnPublish(article1.getTitle()));
 		
 		log.info("Verify the article is published successfully");
 		articlePage.clickStatusIcon(article1.getTitle());
-		articlePage.isPublish(article1.getTitle());
+		verifyTrue(articlePage.isPublish(article1.getTitle()));
 	}
 	
 	@AfterMethod
