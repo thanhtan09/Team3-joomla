@@ -77,7 +77,7 @@ public class Article_page extends Abstract_page{
 		for(int i=1;i<=iCount;i++){
 			String cell = getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a"));
 			if(cell.equals(article)){
-				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+2+"]/a/span")).equals(PUBLISH))
+				if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td["+3+"]/a/span/span")).equals(PUBLISH))
 					show = true;
 				break;
 			}
