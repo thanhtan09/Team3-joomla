@@ -33,7 +33,7 @@ public class TC_JOOMLA_ARTICLE_003 extends Abstract_test{
 		driver = openJoomla(url);
 	}
 	
-	@Test
+	@Test(description = "Verify user can publish an unpublished article")
 	public void TC_003 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
