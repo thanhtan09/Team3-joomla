@@ -5,12 +5,12 @@
        <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_001"/>
     </classes>
   </test>
-  <test name="TC_003">
+  <test name="TC_ARTICLE_001">
     <classes>
        <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003"/>
     </classes>
   </test>
-  <test name="TC_005">
+  <test name="TC_ARTICLE_003">
     <classes>
        <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005"/>
     </classes>
