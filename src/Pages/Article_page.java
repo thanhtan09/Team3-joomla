@@ -523,6 +523,13 @@ public class Article_page extends Abstract_page {
 	
 	}
 	
+	/*
+	 * Is Search Article Display
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Giang Nguyen
+	 */
 	public boolean isSearchArticleDisplay (String article){
 		boolean search = false; 
 		if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+ "[" + 1 + "]/td[" + 2 + "]/a")).equals(article))
