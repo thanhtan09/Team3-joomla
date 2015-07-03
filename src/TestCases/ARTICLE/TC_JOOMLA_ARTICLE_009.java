@@ -14,7 +14,7 @@ import Pages.Home_page;
 import Pages.Login_page;
 import Pages.NewArticle_page;
 
-public class TO_JOOMLA_ARTICLE_009 extends Abstract_test{
+public class TC_JOOMLA_ARTICLE_009 extends Abstract_test{
 
 	ReadData data = new ReadData();
 	User user = new User();
