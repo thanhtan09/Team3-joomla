@@ -508,4 +508,16 @@ public class Article_page extends Abstract_page {
 
 		return show;
 	}
+	/*
+	 * Search for an article
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public void searchforArticle(String article) {
+		enter(driver, By.xpath(Interfaces.ArticlePage.TXT_SEARCH), article);
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_SEARCH));
+	
+	}
 }
