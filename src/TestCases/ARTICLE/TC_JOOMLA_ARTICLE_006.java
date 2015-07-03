@@ -46,7 +46,8 @@ public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 		
 		log.info("Check in an article");
 		articlePage.checkinArticle(article.getTitle());
-		
+	/* PENDING */		
+	
 		log.info("Verify the confirm message is displayed");
 		verifyTrue(articlePage.isCheckinMessage());
 		
