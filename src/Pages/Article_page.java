@@ -14,7 +14,8 @@ public class Article_page extends Abstract_page {
 	private String MESSAGEARCHIVE = "1 article archived.";
 	private String MESSAGEDELETE = "1 article deleted.";
 	private String MESSAGEDELETEALL = " articles deleted.";
-
+	private String MESSAGECHECKIN = "1 article successfully checked in";
+	
 	// Status
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIVED = "Archived";
@@ -23,6 +24,7 @@ public class Article_page extends Abstract_page {
 	private String UNPUBLISH = "Unpublished";
 	private String FRATURED = "Featured article";
 	private String UNFRATURED = "Unfeatured article";
+	private String CHECKEDIN = "state checkedout";
 
 	public Article_page(WebDriver driver) {
 		this.driver = driver;
@@ -529,4 +531,68 @@ public class Article_page extends Abstract_page {
 		}
 		return search;
 		}
+	
+	/*
+	 * Check in article
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void checkinArticle(String article) {
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				click(driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
+				break;
+			}
+		}
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_CHECKIN));
+	}
+	
+	/*
+	 * Is Check in archive
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isCheckinMessage() {
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGECHECKIN))
+			return true;
+
+		return false;
+	}
+
+	/*
+	 * Is Checked archive list
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isCheckinArticle(String article) {
+		boolean show = false;
+
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (isControlExist(driver,
+									By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+											+ "]/td[" + 2 + "]/a/span/span")))
+				show = true;
+				break;
+			}
+		}
+		return show;
+	}
 }
+
