@@ -47,7 +47,7 @@ public class TC_JOOMLA_ARTICLE_004 extends Abstract_test{
 		log.info("UNPublish an article");
 		articlePage.unpublishArticle(article.getTitle());
 		
-		log.info("Verify the article is published successfully");
+		log.info("Verify the article is unpublished successfully");
 		verifyTrue(articlePage.isUnPublish(article.getTitle()));
 	}
 	
