@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_004 extends Abstract_test{
 	}
 	
 	@Test
-	public void TC_004 (){
+	public void TC_ARTICLE_004 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_015 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can change the status of articles using the Status column")
-	public void TC_015 (){
+	public void TC_ARTICLE_015 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

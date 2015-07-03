@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_009 extends Abstract_test{
 	}
 	
 	@Test(description = "User can search for articles using the filter text field")
-	public void TC_009 (){
+	public void TC_ARTICLE_009 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

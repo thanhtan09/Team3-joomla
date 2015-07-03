@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_003 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can publish an unpublished article")
-	public void TC_003 (){
+	public void TC_ARTICLE_003 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

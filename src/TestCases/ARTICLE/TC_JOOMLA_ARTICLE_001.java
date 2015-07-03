@@ -33,7 +33,7 @@ public class TC_JOOMLA_ARTICLE_001 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can create new article with valid information")
-	public void TC_001 (){
+	public void TC_ARTICLE_001 (){
 		
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);

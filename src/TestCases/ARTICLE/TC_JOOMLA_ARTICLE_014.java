@@ -35,7 +35,7 @@ public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can change the order of articles using the Ordering column")
-	public void TC_014 (){
+	public void TC_ARTICLE_014 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

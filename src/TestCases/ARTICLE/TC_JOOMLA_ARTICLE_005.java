@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_005 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can move an article to the archive")
-	public void TC_005 (){
+	public void TC_ARTICLE_005 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

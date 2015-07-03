@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_016 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can change the feature property of articles using the Featured column")
-	public void TC_016 (){
+	public void TC_ARTICLE_016 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

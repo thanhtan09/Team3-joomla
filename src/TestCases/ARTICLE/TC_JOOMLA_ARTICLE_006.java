@@ -34,7 +34,7 @@ public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can check in an article")
-	public void TC_006 (){
+	public void TC_ARTICLE_006 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();

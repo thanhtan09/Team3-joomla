@@ -35,7 +35,7 @@ public class TC_JOOMLA_ARTICLE_002 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can edit an article")
-	public void TC_002 (){
+	public void TC_ARTICLE_002 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();
