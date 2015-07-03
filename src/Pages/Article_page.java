@@ -520,4 +520,13 @@ public class Article_page extends Abstract_page {
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_SEARCH));
 	
 	}
+	
+	public boolean isSearchArticleDisplay (String article){
+		boolean search = false; 
+		if(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+ "[" + 1 + "]/td[" + 2 + "]/a")).equals(article))
+		{
+			search = true;
+		}
+		return search;
+		}
 }
