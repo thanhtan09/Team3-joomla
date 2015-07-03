@@ -44,6 +44,8 @@ public class Interfaces {
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";	
 		public static final String CBX_ALL = "//table[@class='adminlist']/thead/tr/th/input[@type='checkbox']";
 		public static final String FILTER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
+		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 	}
 
 	/*
