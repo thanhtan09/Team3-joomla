@@ -4,10 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import Databases.Article;
-import Databases.User;
 import Functions.Abstract_test;
-import Functions.ReadData;
 import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
@@ -15,10 +12,6 @@ import Pages.Login_page;
 import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_004 extends Abstract_test{
-
-	ReadData data = new ReadData();
-	User user = new User();
-	Article article = new Article();
 	
 	private Login_page loginPage;
 	private Home_page homePage;
@@ -27,10 +20,7 @@ public class TC_JOOMLA_ARTICLE_004 extends Abstract_test{
 	
 	@BeforeMethod
 	public void setup(){
-		String url = data.getUrl("Local_url");
-		user = data.getUser("default user");
-		article = data.getArticle("Article1");
-		driver = openJoomla(url);
+		driver = openJoomla();
 	}
 	
 	@Test

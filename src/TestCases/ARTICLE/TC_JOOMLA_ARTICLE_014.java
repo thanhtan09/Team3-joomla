@@ -4,10 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import Databases.Article;
-import Databases.User;
 import Functions.Abstract_test;
-import Functions.ReadData;
 import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
@@ -16,10 +13,6 @@ import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 
-	ReadData data = new ReadData();
-	User user = new User();
-	Article article1,article2 = new Article();
-	
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
@@ -27,11 +20,7 @@ public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 	
 	@BeforeMethod
 	public void setup(){
-		String url = data.getUrl("Local_url");
-		user = data.getUser("Tan");
-		article1 = data.getArticle("Article4");
-		article2 = data.getArticle("Article5");
-		driver = openJoomla(url);
+		driver = openJoomla();
 	}
 	
 	@Test(description = "Verify user can change the order of articles using the Ordering column")
@@ -41,17 +30,17 @@ public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();
 		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article1.getTitle(), article1.getCategory(), "", article1.getContent(),"");
+		articlePage = newArticlePage.addNewArticle(article4.getTitle(), article4.getCategory(), "", article4.getContent(),"");
 		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isArticleDisplay(article1.getTitle()));	
+		verifyTrue(articlePage.isArticleDisplay(article4.getTitle()));	
 		
 		newArticlePage = articlePage.openNewArticlepage();
-		articlePage = newArticlePage.addNewArticle(article2.getTitle(), article2.getCategory(), "", article2.getContent(), "");
+		articlePage = newArticlePage.addNewArticle(article5.getTitle(), article5.getCategory(), "", article5.getContent(), "");
 		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isArticleDisplay(article2.getTitle()));
+		verifyTrue(articlePage.isArticleDisplay(article5.getTitle()));
 		
 		log.info("Verify the first article changes its position with the second article");
-		verifyTrue(articlePage.isArticleChangePosition(article1.getTitle()));
+		verifyTrue(articlePage.isArticleChangePosition(article5.getTitle()));
 	}
 	
 	@AfterMethod
