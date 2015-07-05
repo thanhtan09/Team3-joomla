@@ -7,12 +7,20 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.Reporter;
+
+import Databases.*;
 
 public abstract class Abstract_test {
 
 	protected final Log log;
 	protected WebDriver driver;
+	
+	//Data
+	protected ReadData data = new ReadData();
+	protected String url;
+	protected User user;
+	protected Article article,article2,article3,article4,article5,article6,article7;
+	protected Client client;
 
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
@@ -25,9 +33,15 @@ public abstract class Abstract_test {
 	 * 
 	 * Author: Tan Vo
 	 */
-	protected WebDriver openJoomla(String _url) {
+	protected WebDriver openJoomla() {
+		
+		//Get data
+		getData();
+		
+		//Start Joomla
 		driver = new FirefoxDriver();
-		driver.get(_url);
+		url = data.getUrl("Local_url");
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 
@@ -48,11 +62,33 @@ public abstract class Abstract_test {
 		}
 	}
 
+	/*.
+	 * Verify True
+	 * 
+	 * Author: Tan Vo
+	 */
 	protected void verifyTrue(boolean condition) {
 		try {
 			Assert.assertTrue(condition);
-		} catch (Throwable e) {
-			
+		} catch (Exception e) {
+			log.info("FAIL: "+e);
 		}
+	}
+	
+	/*.
+	 * Get data
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void getData(){
+		user = data.getUser("Tan");
+		article = data.getArticle("Article1");
+		article2 = data.getArticle("Article2");
+		article3 = data.getArticle("Article3");
+		article4 = data.getArticle("Article4");
+		article5 = data.getArticle("Article5");
+		article6 = data.getArticle("Article6");
+		article7 = data.getArticle("Article7");
+		client = data.getClient("Client1");
 	}
 }

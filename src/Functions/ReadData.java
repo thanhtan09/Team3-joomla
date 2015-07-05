@@ -7,8 +7,7 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import Databases.Article;
-import Databases.User;
+import Databases.*;
 
 public class ReadData {
 
@@ -114,6 +113,57 @@ public class ReadData {
 		}
 
 		return article;
+	}
+	
+	/*
+	 * Get Client
+	 * 
+	 * Parameter: client
+	 * 
+	 * Author: Tan Vo
+	 */
+	public Client getClient(String _client){
+		Client client = new Client();
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// get number row and col contain data
+			int rows = sheet.getRows();
+			int cols = sheet.getColumns();
+
+			// read data in each cell
+			for (int row = 0; row < rows; row++) {
+				for (int col = 0; col < cols; col++) {
+					Cell cell = sheet.getCell(col, row);
+
+					if (cell.getContents().equals(_client)) {
+						Cell name = sheet.getCell(1, row);
+						Cell contact = sheet.getCell(2, row);
+						Cell email = sheet.getCell(3, row);
+						Cell status = sheet.getCell(4, row);
+						
+						client.setName(name.getContents());
+						client.setContact(contact.getContents());
+						client.setEmail(email.getContents());
+						client.setStatus(status.getContents());
+					}
+				}
+			}
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+
+		return client;
 	}
 	
 	/*
