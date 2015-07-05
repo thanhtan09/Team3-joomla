@@ -17,26 +17,19 @@ public class Home_page extends Abstract_page{
 	 * Author: Tan Vo
 	 */
 	public Article_page navigatetoArticlepage(){
-		navigateMenu("Content|Article Manager");		
+		navigateMenu(driver,"Content|Article Manager");		
 		return new Article_page(driver);
 	}
 	
 	/*
-	 * Navigate menu
-	 * 
-	 * Parameter: menu (e.g: Content|Article Manager)
+	 * Navigate to Article Page
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void navigateMenu(String list){
-		String menu = list;
-		String lastItem = "";
-		String[] subMenu = menu.split("[|]");
-		
-		for (String r: subMenu){
-			hover(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+r+"')]"));
-			lastItem = r;
-		}
-		click(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+lastItem+"')]"));
+	public Client_page navigatetoCLientpage(){
+		navigateMenu(driver,"Components|Banners|Clients");
+		return new Client_page(driver);
 	}
+	
+	
 }

@@ -167,4 +167,22 @@ public class Abstract_page {
         }
 	}
 	
+	/*
+	 * Navigate menu
+	 * 
+	 * Parameter: menu (e.g: Content|Article Manager)
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void navigateMenu(WebDriver driver,String list){
+		String menu = list;
+		String lastItem = "";
+		String[] subMenu = menu.split("[|]");
+		
+		for (String r: subMenu){
+			hover(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+r+"')]"));
+			lastItem = r;
+		}
+		click(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+lastItem+"')]"));
+	}
 }
