@@ -639,7 +639,7 @@ public class Article_page extends Abstract_page {
 
 	public void selectDisplayItem(String _item) {
 		
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), _item);
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_DISPLAY), _item);
 		
 	}
 	
