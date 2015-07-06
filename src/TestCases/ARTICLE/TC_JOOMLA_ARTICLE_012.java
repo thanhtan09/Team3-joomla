@@ -33,7 +33,7 @@ public class TC_JOOMLA_ARTICLE_012 extends Abstract_test{
 		articlePage.selectDisplayItem("5");
 		verifyTrue(articlePage.isPaging("5"));
 		articlePage.selectDisplayItem("All");
-		verifyFalse(articlePage.isControlExist(driver, By.xpath("//div[@class = 'pagination']/div[4]")));		
+		verifyFalse(articlePage.isControlExist(driver, By.xpath(Interfaces.ArticlePage.BAR_PAGING)));		
 	}
 	
 	@AfterMethod
