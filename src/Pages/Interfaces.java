@@ -46,6 +46,7 @@ public class Interfaces {
 		public static final String FILTER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
+		public static final String DROP_DISPLAY = "//select[@id='limit']";
 	}
 
 	/*
