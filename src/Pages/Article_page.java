@@ -25,6 +25,7 @@ public class Article_page extends Abstract_page {
 	private String FRATURED = "Featured article";
 	private String UNFRATURED = "Unfeatured article";
 	private String CHECKEDIN = "state checkedout";
+	private String ACCESS_PUBLIC = "Public";
 
 	public Article_page(WebDriver driver) {
 		this.driver = driver;
@@ -510,6 +511,39 @@ public class Article_page extends Abstract_page {
 
 		return show;
 	}
+	
+	/*
+	 * Is Article is public access icon
+	 * 
+	 * Parameter: article name
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isPublicAccessArticle(String article) {
+
+		boolean show = false;
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				String access = getText(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 7 + "]/a"));
+				if (access.equals(ACCESS_PUBLIC)){
+					show= true;
+					break;
+				}
+			}
+		}
+
+		return show;
+	}
+	
 	/*
 	 * Search for an article
 	 * 
