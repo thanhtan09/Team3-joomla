@@ -617,7 +617,7 @@ public class Article_page extends Abstract_page {
 	 */
 	public boolean isCheckinArticle(String article) {
 		boolean show = false;
-
+		
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for (int i = 1; i <= iCount; i++) {
@@ -634,6 +634,12 @@ public class Article_page extends Abstract_page {
 			}
 		}
 		return show;
+	}
+
+	public void selectDisplayItem(String _item) {
+		
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), _item);
+		
 	}
 }
 
