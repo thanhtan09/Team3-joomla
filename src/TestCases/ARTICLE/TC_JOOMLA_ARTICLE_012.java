@@ -1,5 +1,6 @@
 package TestCases.ARTICLE;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,6 +9,7 @@ import Functions.Abstract_test;
 import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
+import Pages.Interfaces;
 import Pages.Login_page;
 import Pages.NewArticle_page;
 
@@ -30,6 +32,8 @@ public class TC_JOOMLA_ARTICLE_012 extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();
 		articlePage.selectDisplayItem("5");
 		verifyTrue(articlePage.isPaging("5"));
+		articlePage.selectDisplayItem("All");
+		verifyFalse(articlePage.isControlExist(driver, By.xpath("//div[@class = 'pagination']/div[4]")));		
 	}
 	
 	@AfterMethod
