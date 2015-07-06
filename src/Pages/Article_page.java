@@ -533,7 +533,7 @@ public class Article_page extends Abstract_page {
 				String access = getText(
 						driver,
 						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-								+ "]/td[" + 7 + "]/a"));
+								+ "]/td[" + 7 + "]"));
 				if (access.equals(ACCESS_PUBLIC)){
 					show= true;
 					break;
