@@ -21,6 +21,7 @@ public abstract class Abstract_test {
 	protected User user;
 	protected Article article,article2,article3,article4,article5,article6,article7;
 	protected Client client;
+	protected Category category;
 
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
@@ -90,5 +91,6 @@ public abstract class Abstract_test {
 		article6 = data.getArticle("Article6");
 		article7 = data.getArticle("Article7");
 		client = data.getClient("Client1");
+		category = data.getCategory("Cate1");
 	}
 }
