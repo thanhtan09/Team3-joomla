@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.jetty.html.Break;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -640,6 +641,17 @@ public class Article_page extends Abstract_page {
 		
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), _item);
 		
+	}
+	
+	public boolean isPaging(String _item){
+		boolean paging = false;
+		int row = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		String row1 = Integer.toString(row);
+		if (row1.equals(_item))
+		{
+			paging = true;
+		}
+		return paging;
 	}
 }
 
