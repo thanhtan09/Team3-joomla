@@ -47,6 +47,7 @@ public class Interfaces {
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
+		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
 	}
 
 	/*
