@@ -82,7 +82,8 @@ public class Interfaces {
 		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
-		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";		
+		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
+		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 	}
 	
 	/*
@@ -99,5 +100,21 @@ public class Interfaces {
 		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String DROP_STATUS = "//select[@id='jform_state']";
+	}
+	
+	/*
+	 * Element in Category page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public class CatetoryPage{
+		public static final String BTN_NEW = "//span[@class='icon-32-new']";
+		public static final String BTN_EDIT = "//li[@id='toolbar-edit']/a/span";
+		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
+		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
+		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
+		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
+		public static final String BTN_REBUILD = "//li[@id='toolbar-refresh']/a/span";
+		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 	}
 }
