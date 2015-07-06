@@ -38,7 +38,6 @@ public class TC_JOOMLA_ARTICLE_012 extends Abstract_test{
 	
 	@AfterMethod
 	public void end(){
-		//articlePage.deleteArticle(article.getTitle());
 		shutdown();
 	}
 }
