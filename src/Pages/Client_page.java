@@ -85,6 +85,7 @@ public class Client_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteClient(String client){
+		select(driver, By.xpath(Interfaces.ClientPage.DROP_STATUS), "All");
 		searchClient(client);
 		click(driver, By.xpath(Interfaces.ClientPage.CHECKBOX_1));
 		clickTrash();

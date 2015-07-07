@@ -184,4 +184,15 @@ public class Abstract_page {
 		}
 		click(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+lastItem+"')]"));
 	}
+	
+	/*
+	 * Get Page title
+	 * 
+	 * Parameter: menu (e.g: Content|Article Manager)
+	 * 
+	 * Author: Tan Vo
+	 */
+	public String getPageTitle(WebDriver driver) {
+		return driver.getTitle();
+	}
 }

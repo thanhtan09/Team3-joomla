@@ -34,7 +34,7 @@ public class Article_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page addNewArticle(String _title, String _category,
+	public void addNewArticle(String _title, String _category,
 			String _status, String _content, String _image, String button) {
 		clickNewbutton();
 		
@@ -42,7 +42,6 @@ public class Article_page extends Abstract_page {
 		
 		newarticle.addNewArticle(_title, _category, _status, _content, _image, button);
 		
-		return new Article_page(driver);
 	}
 
 	/*
@@ -233,7 +232,8 @@ public class Article_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteArticle(String _article) {
-		
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+				"All");
 		searchforArticle(_article);
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));

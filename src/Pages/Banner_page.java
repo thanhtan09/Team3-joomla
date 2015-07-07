@@ -19,15 +19,13 @@ public class Banner_page extends Abstract_page{
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Banner_page addNewBanner(String name, String category, String client, String button){
+	public void addNewBanner(String name, String category, String client, String button){
 		
 		clickNew();
 		
 		NewBanner_page newBanner = Factory_page.getNewBannerPage(driver);
 		
 		newBanner.addNew(name, category, client, button);
-		
-		return new Banner_page(driver);
 	}
 	
 	/*
@@ -70,6 +68,7 @@ public class Banner_page extends Abstract_page{
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner){
+		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS), "All");
 		searchBanner(banner);
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		clickTrash();

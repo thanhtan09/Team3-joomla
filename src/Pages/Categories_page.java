@@ -84,6 +84,7 @@ public class Categories_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteCategory(String cate){
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_STATUS), "All");
 		searchCategory(cate);
 		click(driver, By.xpath(Interfaces.CatetoryPage.CHECKBOX_1));
 		clickTrash();

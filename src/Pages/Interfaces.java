@@ -171,6 +171,8 @@ public class Interfaces {
 		public static final String DROP_CATEGORY = "//select[@id='jform_catid']";
 		public static final String DROP_CLIENT = "//select[@id='jform_cid']";
 		public static final String TXT_NAME = "//input[@id='jform_name']";
+		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
+		public static final String TEXT_HEADER = "//div[@id='toolbar-box']/div/div/h2[contains(text(),'Banner Manager: Edit Banner')]";
 	}
 	
 	public class WebLinksPage{
