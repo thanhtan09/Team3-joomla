@@ -24,4 +24,9 @@ public class Factory_page {
 	{
 		return new NewArticle_page(driver);
 	}
+	
+	public static Categories_page getCategoriesPage(WebDriver driver)
+	{
+		return new Categories_page(driver);
+	}
 }
