@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class NewBanner_page extends Abstract_page {
 
 	private WebDriver driver;
+	
+	private String MESSAGE_SUCCESS = "Banner successfully saved";
 
 	public NewBanner_page(WebDriver driver) {
 		this.driver = driver;
@@ -28,6 +30,29 @@ public class NewBanner_page extends Abstract_page {
 		case "SaveAndClose":
 			clickSaveandClose();
 		}
+	}
+	
+	/*
+	 * Is message success display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isSuccessMessageDisplay(){
+		//if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.MESSAGE+"[contains(text(),'"+MESSAGE_SUCCESS+"')]")))
+		if(getText(driver, By.xpath(Interfaces.NewBannerPage.MESSAGE)).equals(MESSAGE_SUCCESS))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is edit banner page display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isEditBannerPage(){
+		if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.TEXT_HEADER)))
+			return true;
+		return false;
 	}
 
 	/*
