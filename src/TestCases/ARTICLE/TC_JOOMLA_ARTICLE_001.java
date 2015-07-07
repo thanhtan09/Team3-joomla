@@ -5,18 +5,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
-import Pages.Article_page;
-import Pages.Factory_page;
-import Pages.Home_page;
-import Pages.Login_page;
-import Pages.NewArticle_page;
+import Pages.*;
 
 public class TC_JOOMLA_ARTICLE_001 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
-	private NewArticle_page newarticlePage;
 	
 	@BeforeMethod
 	public void setup(){
@@ -34,8 +29,7 @@ public class TC_JOOMLA_ARTICLE_001 extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();		
 		
 		log.info("Create new article");
-		newarticlePage = articlePage.openNewArticlepage();
-		articlePage = newarticlePage.addNewArticle(article.getTitle(), article.getCategory(), "",article.getContent(),"");
+		articlePage.addNewArticle(article.getTitle(), article.getCategory(), "",article.getContent(),"","");
 		
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(articlePage.isArticleDisplay(article.getTitle()));
