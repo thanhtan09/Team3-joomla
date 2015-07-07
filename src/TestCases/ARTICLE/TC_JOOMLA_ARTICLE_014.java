@@ -9,14 +9,12 @@ import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
-import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
-	private NewArticle_page newArticlePage;
 	
 	@BeforeMethod
 	public void setup(){
@@ -28,14 +26,12 @@ public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();
-		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article4.getTitle(), article4.getCategory(), "", article4.getContent(),"");
+		articlePage.addNewArticle(article4.getTitle(), article4.getCategory(), "", article4.getContent(),"","");
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(articlePage.isArticleDisplay(article4.getTitle()));	
 		
-		newArticlePage = articlePage.openNewArticlepage();
-		articlePage = newArticlePage.addNewArticle(article5.getTitle(), article5.getCategory(), "", article5.getContent(), "");
+		articlePage.addNewArticle(article5.getTitle(), article5.getCategory(), "", article5.getContent(), "","");
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(articlePage.isArticleDisplay(article5.getTitle()));
 		
@@ -45,7 +41,8 @@ public class TC_JOOMLA_ARTICLE_014 extends Abstract_test{
 	
 	@AfterMethod
 	public void end(){
-		articlePage.deleteArticle("all");
+		articlePage.deleteArticle(article4.getTitle());
+		articlePage.deleteArticle(article5.getTitle());
 		shutdown();
 	}
 }

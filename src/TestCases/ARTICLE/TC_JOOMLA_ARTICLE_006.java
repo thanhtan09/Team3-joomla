@@ -9,18 +9,18 @@ import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
-import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
-	private NewArticle_page newArticlePage;
+	private String article1;
 	
 	@BeforeMethod
 	public void setup(){
 		driver = openJoomla();
+		article1 = article.getTitle();
 	}
 	
 	@Test(description = "Verify user can check in an article")
@@ -28,26 +28,28 @@ public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();
-		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article.getTitle(), article.getCategory(), "", article.getContent(),"");
+		articlePage.addNewArticle(article.getTitle(), article.getCategory(), "", article.getContent(),"","Save");
 		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isArticleDisplay(article.getTitle()));
+		verifyTrue(articlePage.isMessageArticleDisplay());
+		
+		shutdown();
+		
+		driver = openJoomla();
+		loginPage = Factory_page.getLoginPage(driver);
+		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
+		articlePage = homePage.navigatetoArticlepage();
 		
 		log.info("Check in an article");
-		articlePage.checkinArticle(article.getTitle());
-	/* PENDING */		
+		articlePage.checkinArticle(article1);
 	
 		log.info("Verify the confirm message is displayed");
 		verifyTrue(articlePage.isCheckinMessage());
-		
-		log.info("Verify the archived article is displayed on the table grid");
-		verifyTrue(articlePage.isArchiveList(article.getTitle()));
 	}
 	
 	@AfterMethod
 	public void end(){
-		articlePage.deleteArticle(article.getTitle());
+		articlePage.deleteArticle(article1);
 		shutdown();
 	}
 }

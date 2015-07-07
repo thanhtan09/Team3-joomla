@@ -9,14 +9,12 @@ import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
-import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_016 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
-	private NewArticle_page newArticlePage;
 	
 	@BeforeMethod
 	public void setup(){
@@ -28,19 +26,18 @@ public class TC_JOOMLA_ARTICLE_016 extends Abstract_test{
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();
-		newArticlePage = articlePage.openNewArticlepage();
 		
-		articlePage = newArticlePage.addNewArticle(article7.getTitle(), article7.getCategory(), article7.getStatus(), article7.getContent(),"");
+		articlePage.addNewArticle(article7.getTitle(), article7.getCategory(), article7.getStatus(), article7.getContent(),"","");
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(articlePage.isArticleDisplay(article7.getTitle()));	
+		
+		log.info("Verify the article is featured successfully");
+		articlePage.clickFeaturedIcon(article7.getTitle());
+		verifyTrue(articlePage.isFeaturedArticle(article7.getTitle()));		
 		
 		log.info("Verify the article is unfeatured successfully");
 		articlePage.clickFeaturedIcon(article7.getTitle());
 		verifyTrue(articlePage.isUnFeaturedArticle(article7.getTitle()));
-		
-		log.info("Verify the article is featured successfully");
-		articlePage.clickFeaturedIcon(article7.getTitle());
-		verifyTrue(articlePage.isFeaturedArticle(article7.getTitle()));
 	}
 	
 	@AfterMethod

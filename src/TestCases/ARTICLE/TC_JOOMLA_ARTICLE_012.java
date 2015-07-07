@@ -11,14 +11,12 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Interfaces;
 import Pages.Login_page;
-import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_012 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
-	private NewArticle_page newArticlePage;
 	
 	@BeforeMethod
 	public void setup(){
