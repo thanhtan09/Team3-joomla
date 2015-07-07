@@ -6,22 +6,9 @@ import org.openqa.selenium.WebDriver;
 public class Client_page extends Abstract_page {
 
 	private WebDriver driver;
-	
-	private String MESSAGESUCCESS = "Client successfully saved";
 
 	public Client_page(WebDriver driver) {
 		this.driver = driver;
-	}
-	
-	/*
-	 * Is messagge success displays
-	 * 
-	 * Author: Tan Vo
-	 */
-	public boolean isMessageDisplay(){
-		if(getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(MESSAGESUCCESS))
-			return true;
-		return false;
 	}
 
 	/*
@@ -33,17 +20,6 @@ public class Client_page extends Abstract_page {
 		clickNew();
 		
 		return new NewClient_page(driver);
-	}
-	
-	/*
-	 * Open Category page 
-	 * 
-	 * Author: Tan Vo
-	 */
-	public Categories_page navigateCategoriespage(){
-		navigateMenu(driver, "Components|Banners|Categories");
-		
-		return new Categories_page(driver);
 	}
 
 	/*
