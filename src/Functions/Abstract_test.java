@@ -21,7 +21,6 @@ public abstract class Abstract_test {
 	protected User user;
 	protected Article article,article2,article3,article4,article5,article6,article7;
 	protected Client client;
-	//protected Category category;
 
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
@@ -41,7 +40,7 @@ public abstract class Abstract_test {
 		
 		//Start Joomla
 		driver = new FirefoxDriver();
-		url = data.getUrl("Logigear_url");
+		url = data.getUrl("Local_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -76,14 +75,6 @@ public abstract class Abstract_test {
 		}
 	}
 	
-	protected void verifyFalse(boolean condition) {
-		try {
-			Assert.assertFalse(condition);
-		} catch (Exception e) {
-			log.info("FAIL: "+e);
-		}
-	}
-	
 	/*.
 	 * Get data
 	 * 
@@ -99,6 +90,5 @@ public abstract class Abstract_test {
 		article6 = data.getArticle("Article6");
 		article7 = data.getArticle("Article7");
 		client = data.getClient("Client1");
-	//	category = data.getCategory("Cate1");
 	}
 }
