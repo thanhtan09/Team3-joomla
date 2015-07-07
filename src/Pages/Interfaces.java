@@ -119,4 +119,29 @@ public class Interfaces {
 		public static final String BTN_REBUILD = "//li[@id='toolbar-refresh']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 	}
+	
+	public class WebLinksPage{
+		public static final String BTN_NEW = "//span[@class='icon-32-new']";
+		public static final String BTN_EDIT = "//li[@id='toolbar-edit']/a/span";
+		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
+		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
+		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
+		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
+		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+	}
+	
+	public class NewWebLinksPage{
+		public static final String TXT_TITLE = "//input[@id='jform_title']";
+		public static final String TXT_ALIAS = "//input[@id='jform_alias']";
+		public static final String DROP_CATEGORY = "//select[@id='jform_catid']";
+		public static final String DROP_STATUS = "//select [@id='jform_state']";
+		public static final String DROP_FRATURE = "//select[@id='jform_featured']";
+		public static final String TXT_CONTENT = "//body[@id='tinymce']";
+		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
+		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
+		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
+		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
+		public static final String BTN_INSERT = "//div[@class='fltrt']/button[contains(text(),'Insert')]";
+	}
 }
