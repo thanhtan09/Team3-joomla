@@ -48,6 +48,7 @@ public class Interfaces {
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
+		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 	}
 
 	/*
@@ -85,7 +86,13 @@ public class Interfaces {
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
+		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
+		public static final String DROP_STATUS = "//select[@name='filter_state']";
+		
+		public static final String TXT_SEARCH = "//input[@id='filter_search']";
+		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 	}
 	
 	/*
@@ -115,9 +122,55 @@ public class Interfaces {
 		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
 		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
+		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
-		public static final String BTN_REBUILD = "//li[@id='toolbar-refresh']/a/span";
+		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
+		public static final String DROP_STATUS = "//select[@name='filter_published']";
+		
+		public static final String TXT_SEARCH = "//input[@id='filter_search']";
+		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+	}
+	
+	/*
+	 * Element in New Category page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public class NewCatetoryPage{
+		public static final String TXT_TITLE = "//input[@id='jform_title']";
+		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+	}
+	/*
+	 * Element in Banner page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public class BannerPage{
+		public static final String BTN_NEW = "//span[@class='icon-32-new']";
+		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";
+		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
+		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
+		public static final String DROP_STATUS = "//select[@name='filter_state']";
+		public static final String DROP_DISPLAY = "//select[@id='limit']";
+		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+		public static final String TXT_SEARCH = "//input[@id='filter_search']";
+		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+	}
+	
+	/*
+	 * Element in New Banner page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public class NewBannerPage{
+		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
+		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String DROP_CATEGORY = "//select[@id='jform_catid']";
+		public static final String DROP_CLIENT = "//select[@id='jform_cid']";
+		public static final String TXT_NAME = "//input[@id='jform_name']";
 	}
 	
 	public class WebLinksPage{

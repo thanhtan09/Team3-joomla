@@ -177,8 +177,7 @@ public class Abstract_page {
 	public void navigateMenu(WebDriver driver,String list){
 		String menu = list;
 		String lastItem = "";
-		String[] subMenu = menu.split("[|]");
-		
+		String[] subMenu = menu.split("[|]");		
 		for (String r: subMenu){
 			hover(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+r+"')]"));
 			lastItem = r;

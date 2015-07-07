@@ -29,4 +29,20 @@ public class Factory_page {
 	{
 		return new Categories_page(driver);
 	}
+	
+	public static Client_page getClientPage(WebDriver driver){
+		return new Client_page(driver);
+	}
+	
+	public static NewClient_page getNewClientPage(WebDriver driver){
+		return new NewClient_page(driver);
+	}
+	
+	public static NewCategory_page getNewCategoryPage(WebDriver driver){
+		return new NewCategory_page(driver);
+	}
+	
+	public static NewBanner_page getNewBannerPage(WebDriver driver){
+		return new NewBanner_page(driver);
+	}
 }

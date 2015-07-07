@@ -233,46 +233,20 @@ public class Article_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteArticle(String _article) {
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_DISPLAY), "All");
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(_article)) {
-				click(driver,
-						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-				break;
-			}
-		}
+		
+		searchforArticle(_article);
+		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
 				STATUS_TRASHED);
-
-		int iCount1 = 0;
-		iCount1 = countElement(driver,
-				By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount1; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(_article)) {
-				click(driver,
-						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-				break;
-			}
-		}
+		
+		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
 		waitControlExist(
 				driver,
 				By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
-						+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+						+ "[contains(text(),'" + MESSAGEDELETE + "')]"));		
 	}
 
 	/*

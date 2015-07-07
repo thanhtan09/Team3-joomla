@@ -167,6 +167,96 @@ public class ReadData {
 	}
 	
 	/*
+	 * Get Category
+	 * 
+	 * Author: Tan Vo
+	 */
+	public Category getCategory(String cate){
+		Category category = new Category();
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// get number row and col contain data
+			int rows = sheet.getRows();
+			int cols = sheet.getColumns();
+
+			// read data in each cell
+			for (int row = 0; row < rows; row++) {
+				for (int col = 0; col < cols; col++) {
+					Cell cell = sheet.getCell(col, row);
+
+					if (cell.getContents().equals(cate)) {
+						Cell title = sheet.getCell(1, row);
+						
+						category.setTitle(title.getContents());
+					}
+				}
+			}
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+
+		return category;
+	}
+	
+	/*
+	 * Get Banner
+	 * 
+	 * Author: Tan Vo
+	 */
+	public Banner getBanner(String ban){
+		Banner banner = new Banner();
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// get number row and col contain data
+			int rows = sheet.getRows();
+			int cols = sheet.getColumns();
+
+			// read data in each cell
+			for (int row = 0; row < rows; row++) {
+				for (int col = 0; col < cols; col++) {
+					Cell cell = sheet.getCell(col, row);
+
+					if (cell.getContents().equals(ban)) {
+						Cell name = sheet.getCell(1, row);
+						Cell category = sheet.getCell(2, row);
+						Cell client = sheet.getCell(3, row);
+						
+						banner.setName(name.getContents());
+						banner.setCategory(category.getContents());
+						banner.setClient(client.getContents());
+					}
+				}
+			}
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+
+		return banner;
+	}
+	
+	/*
 	 * Get url
 	 * 
 	 * Parameter: where
