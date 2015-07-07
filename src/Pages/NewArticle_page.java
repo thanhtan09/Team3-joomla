@@ -2,7 +2,6 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class NewArticle_page extends Abstract_page {
 
@@ -11,7 +10,7 @@ public class NewArticle_page extends Abstract_page {
 	public NewArticle_page(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	/*
 	 * Create new article
 	 * 
@@ -19,23 +18,28 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page addNewArticle(String _title, String _category, String _status, String _content, String _image){
+	public Article_page addNewArticle(String _title, String _category,
+			String _status, String _content, String _image, String button) {
 		enterTitle(_title);
 		selectCatetory(_category);
-		if(_status!=""){
+		if (_status != "") {
 			selectStatus(_status);
 		}
 		enterArticleText(_content);
-		
-		if(_image!=""){
+
+		if (_image != "") {
 			insertImage(_image);
 		}
-		
-		clickSaveandClosebutton();
-		
+		switch (button) {
+		case "Save":
+			clickSavebutton();
+		case "": case "SaveAndClose":
+			clickSaveandClosebutton();
+		}
+
 		return new Article_page(driver);
 	}
-	
+
 	/*
 	 * Edit an article
 	 * 
@@ -43,14 +47,17 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void insertImage(String image){
-		
+	public void insertImage(String image) {
+
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_IMAGE));
-		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@frameborder='0']")));
+		driver.switchTo().frame(
+				driver.findElement(By.xpath("//iframe[@frameborder='0']")));
 		switchFrame(driver, By.xpath(Interfaces.NewArticlePage.FRAME_IMAGE));
-        click(driver, By.xpath("//div[@class='item']/a[@title='"+image+"']/img"));
-        
+		click(driver,
+				By.xpath("//div[@class='item']/a[@title='" + image + "']/img"));
+
 	}
+
 	/*
 	 * Edit an article
 	 * 
@@ -58,16 +65,17 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page editArticle(String title, String category, String status, String content){
-		
+	public Article_page editArticle(String title, String category,
+			String status, String content) {
+
 		enterTitle(title);
 		selectCatetory(category);
-		if(status!=""){
+		if (status != "") {
 			selectStatus(status);
 		}
 		enterArticleText(content);
 		clickSaveandClosebutton();
-		
+
 		return new Article_page(driver);
 	}
 
@@ -92,7 +100,7 @@ public class NewArticle_page extends Abstract_page {
 	public void selectCatetory(String _cate) {
 		select(driver, By.xpath(Interfaces.NewArticlePage.DROP_CATEGORY), _cate);
 	}
-	
+
 	/*
 	 * Select Status
 	 * 
@@ -116,40 +124,40 @@ public class NewArticle_page extends Abstract_page {
 		enter(driver, By.xpath(Interfaces.NewArticlePage.TXT_CONTENT), _content);
 		driver.switchTo().defaultContent();
 	}
-	
+
 	/*
 	 * Click on Save button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickSavebutton(){
+	public void clickSavebutton() {
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_SAVE));
 	}
-	
+
 	/*
 	 * Click on Save&Close button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickSaveandClosebutton(){
+	public void clickSaveandClosebutton() {
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_SAVEANDCLOSE));
 	}
-	
+
 	/*
 	 * Click on Save&New button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickSaveandNewbutton(){
+	public void clickSaveandNewbutton() {
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_SAVEANDNEW));
 	}
-	
+
 	/*
 	 * Click on Cancel button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickCancelbutton(){
+	public void clickCancelbutton() {
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CANCEL));
 	}
 }
